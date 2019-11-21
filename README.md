@@ -1,7 +1,7 @@
 # Golang-Client
 EasyDB Golang Client
 
-This gem has not yet been implemented. If you'd like to write it, I'll pay you!
+This package has not yet been implemented. If you'd like to write it, I'll pay you!
 
 Just implement the following 4 functions with their respective cURLs:
 
