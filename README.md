@@ -8,7 +8,7 @@ Just implement the following 4 functions with their respective cURLs:
 Get: 
 ```
 curl --request GET \ 
---url https://app.easydb.io/database/{database_uuid}/{key} 
+--url https://app.easydb.io/database/{database_uuid}/{key} \
 -H "token:{database_token}"
 ```
 
@@ -38,7 +38,7 @@ curl --request DELETE \
 List: 
 ```
 curl --request GET \ 
---url https://app.easydb.io/database/{database_uuid}
+--url https://app.easydb.io/database/{database_uuid} \
 -H "token:{database_token}"
 ```
 
