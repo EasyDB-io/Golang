@@ -20,18 +20,6 @@ func Connect(database string, token string) *DB {
 	return &DB{database: database, token: token}
 }
 
-func (db *DB) Get(key string) ([]byte, error) {
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/database/%s/%s", BASE_URL, db.database, key), nil)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := db.doHTTP(req)
-	if err != nil {
-		return nil, err
-	}
-	return ioutil.ReadAll(resp.Body)
-}
-
 func (db *DB) doHTTP(req *http.Request) (*http.Response, error) {
 	client := &http.Client{}
 	req.Header.Set("token", db.token)
@@ -43,6 +31,18 @@ func (db *DB) doHTTP(req *http.Request) (*http.Response, error) {
 		return nil, errors.New(fmt.Sprintf("HTTP Error code %d", resp.StatusCode))
 	}
 	return resp, nil
+}
+
+func (db *DB) Get(key string) ([]byte, error) {
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/database/%s/%s", BASE_URL, db.database, key), nil)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := db.doHTTP(req)
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(resp.Body)
 }
 
 func (db *DB) Put(key string, value interface{}) error {
