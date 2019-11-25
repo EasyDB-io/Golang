@@ -16,6 +16,10 @@ type DB struct {
 	token    string
 }
 
+func Connect(database string, token string) *DB {
+	return &DB{database: database, token: token}
+}
+
 func (db *DB) Get(key string) ([]byte, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/database/%s/%s", BASE_URL, db.database, key), nil)
 	if err != nil {
